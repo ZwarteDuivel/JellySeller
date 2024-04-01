@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import SignaturePad from 'signature_pad';
 import { toast } from 'react-toastify'; // Import toast from react-toastify
-import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
 const Register = () => {
