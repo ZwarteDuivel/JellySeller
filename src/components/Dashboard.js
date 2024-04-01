@@ -6,10 +6,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
-  const [uid, setUid] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
 
   useEffect(() => {
     // Check if 'isLoggedIn' cookie exists
@@ -23,16 +19,6 @@ const Dashboard = () => {
       navigate('/login');
     }
   }, [navigate]);
-
-  useEffect(() => {
-    // Update input fields when user data changes
-    if (userData) {
-      setUid(userData.uid);
-      setName(userData.name);
-      setEmail(userData.email);
-      setPhone(userData.phone);
-    }
-  }, [userData]);
 
   const fetchUserData = async () => {
     try {
@@ -62,27 +48,17 @@ const Dashboard = () => {
     navigate('/login');
   };
 
-
-
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg flex flex-col">
         <div className="flex justify-between items-center bg-gray-200 p-4 rounded-t-lg">
           <h1 className="text-3xl">Dashboard Page</h1>
-          <div>
-            <button
-              className="bg-blue-500 text-white px-4 py-2 rounded-full mr-4"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-            <button
-              className="bg-green-500 text-white px-4 py-2 rounded-full"
-              onClick={}
-            >
-              Download User Data
-            </button>
-          </div>
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded-full mr-4"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
         <div className="flex justify-center items-center mt-4">
           {/* User profile image placeholder */}
@@ -95,10 +71,10 @@ const Dashboard = () => {
         <div className="mt-8">
           {isLoggedIn && userData && (
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <p>UID: {uid}</p>
-              <p>Name: {name}</p>
-              <p>Email: {email}</p>
-              <p>Phone: {phone}</p>
+              <p>UID: {userData.uid}</p>
+              <p>Name: {userData.name}</p>
+              <p>Email: {userData.email}</p>
+              <p>Phone: {userData.phone}</p>
             </div>
           )}
         </div>
