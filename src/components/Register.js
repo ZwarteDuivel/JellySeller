@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
 import SignaturePad from 'signature_pad';
-import { toast } from 'react-toastify'; // Import toast from react-toastify
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
 const Register = () => {
@@ -9,7 +8,6 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [signatureWidth, setSignatureWidth] = useState(0);
-  const [showToast, setShowToast] = useState(false); // State to control toast visibility
   const [uid, setUid] = useState(null); // State to hold UID
   const [licenseAccepted, setLicenseAccepted] = useState(false); // State to hold license acceptance
   const navigate = useNavigate(); // useNavigate hook for navigation
@@ -58,11 +56,11 @@ const Register = () => {
       });
 
       if (response.ok) {
-        setShowToast(true); // Show toast message on successful registration
+      
 
         // Hide toast message after 10 seconds
         setTimeout(() => {
-          setShowToast(false);
+         
           navigate('/login'); // Navigate to login page
         }, 10000);
         
@@ -129,12 +127,11 @@ const Register = () => {
           </button>
         </div>
       </div>
-      {/* Toast message */}
-      {showToast && (
-        <div className="toast">
+
+        <div >
           <span role="img" aria-label="checkmark">✅</span> Registration successful! UID: {uid}
         </div>
-      )}
+   
     </div>
   );
 }
