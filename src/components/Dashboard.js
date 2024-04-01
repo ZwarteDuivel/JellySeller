@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import html2pdf from 'html2pdf.js';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -63,28 +62,7 @@ const Dashboard = () => {
     navigate('/login');
   };
 
-  const handleDownloadUserData = () => {
-    // Create HTML content containing user details
-    const htmlContent = `
-      <div>
-        <h1>User Data</h1>
-        <p>UID: ${uid}</p>
-        <p>Name: ${name}</p>
-        <p>Email: ${email}</p>
-        <p>Phone: ${phone}</p>
-      </div>
-    `;
 
-    // Convert HTML content to PDF
-    html2pdf()
-      .from(htmlContent)
-      .toPdf()
-      .get('pdf')
-      .then(pdf => {
-        // Save PDF as a file
-        pdf.save(`${uid}_data.pdf`);
-      });
-  };
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -100,7 +78,7 @@ const Dashboard = () => {
             </button>
             <button
               className="bg-green-500 text-white px-4 py-2 rounded-full"
-              onClick={handleDownloadUserData}
+              onClick={}
             >
               Download User Data
             </button>
